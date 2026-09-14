@@ -300,8 +300,8 @@ submission = {
     "candidate": {
         "name": "Vaibhav Pal",
         "email": "vaibhav.pal@mnnit.ac.in",
-        "repo_url": "https://github.com/vaibhavpal/ivy-homes-frontend",
-        "demo_url": "https://ivy-homes-portal.vercel.app"
+        "repo_url": "https://github.com/VAIBHAV8839/ivy-assignment",
+        "demo_url": "https://all-in-for-ivy.duckdns.org"
     },
     "answers": {
         "total_listing_records": q1_total,
