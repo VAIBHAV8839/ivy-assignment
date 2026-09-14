@@ -1,4 +1,6 @@
-# Ivy Homes — Software Engineering Internship Assignment (September 2026)
+import os
+
+content = """# Ivy Homes — Software Engineering Internship Assignment (September 2026)
 
 **Candidate**: Vaibhav Pal  
 **Assigned City**: Chennai  
@@ -18,6 +20,8 @@ The frontend is a modern React application built with Vite, Tailwind CSS, and Lu
 ### Installation & Launch
 ```bash
 # Navigate to the frontend directory
+cd frontend
+
 # Install dependencies
 npm install
 
@@ -107,3 +111,9 @@ Testing hypotheses that failed is as critical as finding the bugs:
 2. **Real-time Syndicate & Anomaly Scanner**: An automated client-side badge flagging suspicious listings (advance token warnings, unit mismatch alerts, cross-portal duplicate comparisons).
 3. **Advanced Similar Listings Engine**: Vector or attribute-based nearest-neighbor algorithm ranking properties by similarity in layout, locality, and price per sqft.
 4. **Automated End-to-End Test Suite**: Comprehensive Playwright tests verifying the 30-minute session survival, token auto-refresh, and multi-filter persistence.
+"""
+
+target = r"c:\Users\saura\Desktop\Online_Judge_project\README_IVY.md"
+with open(target, "w", encoding="utf-8") as f:
+    f.write(content)
+print("Successfully written README_IVY.md")
