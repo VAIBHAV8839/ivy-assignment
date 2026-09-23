@@ -4,3 +4,7 @@ dist-ssr
 *.local
 .vscode
 .DS_Store
+all_listings.csv
+all_listings.json
+*.pem
+

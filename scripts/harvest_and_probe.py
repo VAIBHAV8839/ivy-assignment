@@ -6,7 +6,8 @@ import time
 BASE_URL = "https://solve.ivy.homes"
 API_KEY = "IVY26-287C534D9C9A"
 
-OUTPUT_DIR = r"C:\Users\saura\.gemini\antigravity\brain\fdcfe58d-1a28-4492-81f9-efca80e55d18\scratch"
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+OUTPUT_DIR = os.path.join(BASE_DIR, "src", "data")
 os.makedirs(OUTPUT_DIR, exist_ok=True)
 
 # Login

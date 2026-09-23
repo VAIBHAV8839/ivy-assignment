@@ -1,6 +1,6 @@
 import React, { useState, useMemo } from 'react';
 import ListingCard from '../components/ListingCard';
-import { Search, SlidersHorizontal, Filter, ArrowUpDown, ChevronLeft, ChevronRight, X } from 'lucide-react';
+import { Search, SlidersHorizontal, Filter, ArrowUpDown, ChevronLeft, ChevronRight, X, Download } from 'lucide-react';
 import { getCleanPrice, getCleanCarpet } from '../utils';
 
 export default function ListingsPage({ listings, savedIds, onToggleSave, onSelectListing }) {
@@ -101,6 +101,39 @@ export default function ListingsPage({ listings, savedIds, onToggleSave, onSelec
     setPage(1);
   };
 
+  const handleDownloadJSON = () => {
+    const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(filteredListings, null, 2));
+    const downloadAnchor = document.createElement('a');
+    downloadAnchor.setAttribute("href", dataStr);
+    downloadAnchor.setAttribute("download", "ivy_listings.json");
+    document.body.appendChild(downloadAnchor);
+    downloadAnchor.click();
+    downloadAnchor.remove();
+  };
+
+  const handleDownloadCSV = () => {
+    if (!filteredListings.length) return;
+    const headers = Object.keys(filteredListings[0]);
+    const csvRows = [];
+    csvRows.push(headers.join(','));
+    for (const row of filteredListings) {
+      const values = headers.map(header => {
+        const val = row[header];
+        if (val === null || val === undefined) return '""';
+        if (typeof val === 'object') return `"${JSON.stringify(val).replace(/"/g, '""')}"`;
+        return `"${String(val).replace(/"/g, '""')}"`;
+      });
+      csvRows.push(values.join(','));
+    }
+    const csvString = "data:text/csv;charset=utf-8," + encodeURIComponent(csvRows.join('\n'));
+    const downloadAnchor = document.createElement('a');
+    downloadAnchor.setAttribute("href", csvString);
+    downloadAnchor.setAttribute("download", "ivy_listings.csv");
+    document.body.appendChild(downloadAnchor);
+    downloadAnchor.click();
+    downloadAnchor.remove();
+  };
+
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 w-full">
       {/* Header */}
@@ -112,27 +145,50 @@ export default function ListingsPage({ listings, savedIds, onToggleSave, onSelec
           </p>
         </div>
 
-        {/* Search Bar */}
-        <div className="relative w-full md:w-80">
-          <Search className="w-4 h-4 text-slate-400 absolute left-3.5 top-1/2 -translate-y-1/2" />
-          <input
-            type="text"
-            placeholder="Search apartment, locality..."
-            value={searchQuery}
-            onChange={(e) => {
-              setSearchQuery(e.target.value);
-              setPage(1);
-            }}
-            className="w-full bg-slate-900 border border-slate-700 rounded-xl pl-10 pr-4 py-2 text-sm text-white placeholder-slate-500 focus:outline-none focus:border-emerald-500 transition"
-          />
-          {searchQuery && (
+        {/* Action Controls: Search & Download */}
+        <div className="flex flex-wrap items-center gap-3">
+          {/* Download Buttons */}
+          <div className="flex items-center gap-2">
             <button
-              onClick={() => setSearchQuery('')}
-              className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 hover:text-white"
+              onClick={handleDownloadJSON}
+              title="Download listings as JSON"
+              className="flex items-center gap-1.5 px-3 py-2 bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 rounded-xl text-xs font-medium transition cursor-pointer"
             >
-              <X className="w-4 h-4" />
+              <Download className="w-3.5 h-3.5 text-emerald-400" />
+              JSON
             </button>
-          )}
+            <button
+              onClick={handleDownloadCSV}
+              title="Download listings as CSV"
+              className="flex items-center gap-1.5 px-3 py-2 bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 rounded-xl text-xs font-medium transition cursor-pointer"
+            >
+              <Download className="w-3.5 h-3.5 text-emerald-400" />
+              CSV
+            </button>
+          </div>
+
+          {/* Search Bar */}
+          <div className="relative w-full sm:w-64">
+            <Search className="w-4 h-4 text-slate-400 absolute left-3.5 top-1/2 -translate-y-1/2" />
+            <input
+              type="text"
+              placeholder="Search apartment, locality..."
+              value={searchQuery}
+              onChange={(e) => {
+                setSearchQuery(e.target.value);
+                setPage(1);
+              }}
+              className="w-full bg-slate-900 border border-slate-700 rounded-xl pl-10 pr-4 py-2 text-sm text-white placeholder-slate-500 focus:outline-none focus:border-emerald-500 transition"
+            />
+            {searchQuery && (
+              <button
+                onClick={() => setSearchQuery('')}
+                className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 hover:text-white"
+              >
+                <X className="w-4 h-4" />
+              </button>
+            )}
+          </div>
         </div>
       </div>
 
