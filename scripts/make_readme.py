@@ -5,7 +5,7 @@ content = """# Ivy Homes — Software Engineering Internship Assignment (Septemb
 **Candidate**: Vaibhav Pal  
 **Assigned City**: Chennai  
 **Assigned Locality**: Thoraipakkam  
-**API Key**: `IVY26-287C534D9C9A`  
+**API Key**: Configured via `.env` (refer to `.env.example`)  
 
 ---
 

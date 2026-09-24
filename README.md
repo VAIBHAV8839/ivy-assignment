@@ -3,7 +3,7 @@
 **Candidate**: Vaibhav Pal  
 **Assigned City**: Chennai  
 **Assigned Locality**: Thoraipakkam  
-**API Key**: 
+**API Key**: Configured securely in `.env` (refer to `.env.example`)  
 **Live Demo**: [https://all-in-for-ivy.duckdns.org](https://all-in-for-ivy.duckdns.org)  
 **GitHub Repository**: [https://github.com/VAIBHAV8839/ivy-assignment](https://github.com/VAIBHAV8839/ivy-assignment)  
 
@@ -19,11 +19,14 @@ The frontend is a modern React application built with Vite, Tailwind CSS, and Lu
 
 ### Installation & Launch
 ```bash
-# Navigate to the frontend directory
-# Install dependencies
+# 1. Configure environment variables from template
+cp .env.example .env
+# Populate your assigned VITE_API_KEY and VITE_API_BASE_URL in .env
+
+# 2. Install dependencies
 npm install
 
-# Start local development server
+# 3. Start local development server
 npm run dev
 ```
 

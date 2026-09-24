@@ -2,9 +2,12 @@ import requests
 import json
 import os
 import time
+from dotenv import load_dotenv
 
-BASE_URL = "https://solve.ivy.homes"
-API_KEY = "IVY26-287C534D9C9A"
+load_dotenv()
+
+BASE_URL = os.getenv("API_BASE_URL", os.getenv("VITE_API_BASE_URL", "https://solve.ivy.homes"))
+API_KEY = os.getenv("API_KEY", os.getenv("VITE_API_KEY", ""))
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 OUTPUT_DIR = os.path.join(BASE_DIR, "src", "data")

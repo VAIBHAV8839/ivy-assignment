@@ -1,6 +1,6 @@
 // API client for Ivy Homes Property API with automatic silent token refresh
-const BASE_URL = 'https://solve.ivy.homes';
-const API_KEY = 'IVY26-287C534D9C9A';
+const BASE_URL = import.meta.env.VITE_API_BASE_URL || 'https://solve.ivy.homes';
+const API_KEY = import.meta.env.VITE_API_KEY || '';
 
 import offlineListings from './data/listings.json';
 import offlineRentals from './data/rentals.json';

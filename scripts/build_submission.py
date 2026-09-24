@@ -1,6 +1,9 @@
 import json
 import os
 from collections import defaultdict, Counter
+from dotenv import load_dotenv
+
+load_dotenv()
 
 SCRATCH_DIR = r"C:\Users\saura\.gemini\antigravity\brain\fdcfe58d-1a28-4492-81f9-efca80e55d18\scratch"
 ROOT_DIR = r"c:\Users\saura\Desktop\Online_Judge_project"
@@ -296,7 +299,7 @@ findings = [
 ]
 
 submission = {
-    "api_key": "IVY26-287C534D9C9A",
+    "api_key": os.getenv("API_KEY", os.getenv("VITE_API_KEY", "your_api_key_here")),
     "candidate": {
         "name": "Vaibhav Pal",
         "email": "vaibhav.pal@mnnit.ac.in",

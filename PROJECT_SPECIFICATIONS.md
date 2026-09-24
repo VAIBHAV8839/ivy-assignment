@@ -4,7 +4,7 @@
 **Candidate**: Vaibhav Pal (`vaibhav.pal@mnnit.ac.in`)  
 **Assigned City**: Chennai  
 **Assigned Locality**: Thoraipakkam  
-**API Key**: `IVY26-287C534D9C9A`  
+**API Key**: Configured securely via `.env` (refer to `.env.example`)  
 **Live Production URL**: [https://all-in-for-ivy.duckdns.org](https://all-in-for-ivy.duckdns.org)  
 **Public Repository**: [https://github.com/VAIBHAV8839/ivy-assignment](https://github.com/VAIBHAV8839/ivy-assignment)  
 **Target Assessment**: Ivy Homes Software Engineering Internship Assignment (September 2026)
@@ -57,7 +57,7 @@ We authored automated probing scripts in Python using `requests` to test every e
 - **Authentication Probe**:
   - `GET /v1/listings?api_key=IVY26-...` returned `HTTP 401 Unauthorized` with body:
     `{"detail": "send your key in the X-API-Key request header, not as a query parameter"}`.
-  - Fix: Configured global HTTP header interceptor: `X-API-Key: IVY26-287C534D9C9A`.
+  - Fix: Configured global HTTP header interceptor: `X-API-Key: <API_KEY from .env>`.
 - **Session Lifespan Probe**:
   - `POST /auth/login` with demo credentials returned:
     `{"access_token": "...", "expires_in": 900, "refresh_token": "...", "refresh_url": "/auth/refresh"}`.
