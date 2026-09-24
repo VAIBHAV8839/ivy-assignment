@@ -3,7 +3,7 @@
 **Candidate**: Vaibhav Pal  
 **Assigned City**: Chennai  
 **Assigned Locality**: Thoraipakkam  
-**API Key**: `IVY26-287C534D9C9A`  
+**API Key**: 
 **Live Demo**: [https://all-in-for-ivy.duckdns.org](https://all-in-for-ivy.duckdns.org)  
 **GitHub Repository**: [https://github.com/VAIBHAV8839/ivy-assignment](https://github.com/VAIBHAV8839/ivy-assignment)  
 
